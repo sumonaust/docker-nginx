@@ -11,3 +11,6 @@ To run docker images
 ```
 docker run -p 8080:80 -d <TAG-NAME>
 ```
+
+
+docker ps
