@@ -32,3 +32,17 @@ sudo systemctl start docker
 sudo docker run hello-world
 
 docker --version
+
+--------------------
+FROM ubuntu
+RUN apt update
+RUN apt install python3 -y
+RUN apt -y install python3-pip
+WORKDIR src
+COPY . .
+RUN pip install -r requirements.txt --break-system-packages
+EXPOSE 5000
+CMD ["flask", "run", "--host", "0.0.0.0"]
+
+file: app.py  Dockerfile  requirements.txt
+------------------------------------------------
