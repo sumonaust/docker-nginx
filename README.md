@@ -35,14 +35,23 @@ docker --version
 
 --------------------
 FROM ubuntu
+
 RUN apt update
+
 RUN apt install python3 -y
+
 RUN apt -y install python3-pip
+
 WORKDIR src
+
 COPY . .
+
 RUN pip install -r requirements.txt --break-system-packages
+
 EXPOSE 5000
+
 CMD ["flask", "run", "--host", "0.0.0.0"]
+
 
 file: app.py  Dockerfile  requirements.txt
 ------------------------------------------------
@@ -54,3 +63,8 @@ RUN npm install
 COPY . .
 EXPOSE 3000
 CMD ["npm", "start"]
+
+--------------------------
+
+docker build -t todo .
+docker run -it -d -p 3000:3000 todo
